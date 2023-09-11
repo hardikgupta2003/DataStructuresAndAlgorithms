@@ -31,3 +31,5 @@ int main(){
     cout<<"Sum of 2D array : "<<search(row,col,arr);
     return 0;
 }
+
+// we can print column wise sum by replacing i with j and j with i..in arr[i][j]
