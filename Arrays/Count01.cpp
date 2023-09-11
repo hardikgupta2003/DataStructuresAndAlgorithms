@@ -1,24 +1,55 @@
-#include <iostream>
+
+//{ Driver Code Starts
+//Initial template for C++
+
+#include <bits/stdc++.h>
 using namespace std;
 
-int count01(int n,int arr[]){
+// } Driver Code Ends
+//User function template for C++
 
-    int zeroCount=0;
-    int oneCount=0;
-    
-    for(int i=0;i<n;i++){
-        if(arr[i]==0){
-            zeroCount++;
+class Solution{   
+public:
+    void segregate0and1(int arr[], int n) {
+        int index=0;
+        int zeroCount=0;
+        int oneCount=0;
+        for( int i=0;i<n;i++){
+            if(arr[i]==0){
+                zeroCount++;
+            }
+            else{
+                oneCount++;
+            }
         }
-        else{
-            oneCount++;
+        while(zeroCount--){
+            arr[index++]=0;
+        }
+        while(oneCount--){
+            arr[index++]=1;
         }
     }
-    cout<<"zero count : "<<zeroCount<<endl;
-    cout<<"one count : "<<oneCount<<endl;
-}
-int main(){
-    int arr[8]={1,0,0,1,1,1,0,1};
-    count01(8,arr);
+};
+
+//{ Driver Code Starts.
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        int arr[n];
+        for (int i = 0; i < n; i++) {
+            cin >> arr[i];
+        }
+        Solution ob;
+        ob.segregate0and1(arr, n);
+        for (int i = 0; i < n; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << "\n";
+    }
     return 0;
 }
+// } Driver Code Ends
