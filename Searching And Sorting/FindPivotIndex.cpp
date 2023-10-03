@@ -2,7 +2,7 @@
 #include<vector>
 using namespace std;
 
-int fintPivotIndex(vector<int>& nums) {
+int findPivotIndex(vector<int>& nums) {
         int n=nums.size();
         int s=0;
         int e=n-1;
@@ -33,7 +33,7 @@ int main(){
 
     vector<int> arr{10,12,14,16,2,4,6,8};
     
-    int index = fintPivotIndex(arr);
+    int index = findPivotIndex(arr);
     cout<<"pivot index  : "<<index<<endl;
     return 0;
 }
