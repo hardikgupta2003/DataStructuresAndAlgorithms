@@ -13,22 +13,33 @@ using namespace std;
 //         }
 //         return -1;
 //     }
-  int findDuplicate(vector<int>& nums) {
-       int ans=-1;
-       for(int i=0;i<nums.size();i++){
-           int index=abs(nums[i]);
 
-           //already visited
-           if(nums[index]<0){
-               ans=index;
-               break;
-           }
+// approach 3
+//   int findDuplicate(vector<int>& nums) {
+//        int ans=-1;
+//        for(int i=0;i<nums.size();i++){
+//            int index=abs(nums[i]);
 
-           //not visited? then mark visited
-           nums[index]*=-1;
+//            //already visited
+//            if(nums[index]<0){
+//                ans=index;
+//                break;
+//            }
 
-       }
-       return ans;
+//            //not visited? then mark visited
+//            nums[index]*=-1;
+
+//        }
+//        return ans;
+//     }
+
+// approach 3
+
+ int findDuplicate(vector<int>& nums) {
+      while(nums[0]!=nums[nums[0]]){
+          swap(nums[0],nums[nums[0]]);
+      }
+      return nums[0];
     }
 int main(){
     vector<int> nums{1,3,4,2,2};
