@@ -25,6 +25,16 @@ void PrintLL(Node* Head){
 
     }
 }
+
+void CountLL(Node * Head){
+    Node* temp=Head;
+    int count=0;
+    while(temp!=NULL){
+        count++;
+        temp=temp->Next;
+    }
+    cout<<count;
+}
 int main(){
     Node* first=new Node(20);
     Node* Head=first;
@@ -33,6 +43,8 @@ int main(){
 
     first->Next=second;
     second->Next=third;
-    PrintLL(Head);
+    // PrintLL(Head);
+    CountLL(Head);
+
 
 }
