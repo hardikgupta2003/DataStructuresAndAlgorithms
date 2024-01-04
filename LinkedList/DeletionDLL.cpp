@@ -15,6 +15,9 @@ class Node{
         this->Next=NULL;
         this->Prev=NULL;
     }
+    ~Node(){
+        cout<<"Destructor called for : "<<this->data<<endl;
+    }
 
 };
 
@@ -92,6 +95,56 @@ void insertAtPosition(Node* &Head,Node*& Tail,int data,int pos){
     }
 
 }
+
+void deleteNode(Node* &Head,Node*& Tail,int pos){
+    int length=CountLL(Head);
+    if(pos==1){
+        Node* temp=Head;
+        Head=Head->Next;
+        Head->Prev=NULL;
+        temp->Next=NULL;
+
+        delete temp;
+
+    }
+    else if(pos==length){
+        Node* temp=Head;
+
+        while(temp->Next!=Tail){
+            temp=temp->Next;
+
+        }
+        temp->Next=NULL;
+        Tail->Prev=NULL;
+        delete Tail;
+        Tail=temp;
+    }
+
+    else{
+        // deletion at postion 
+        Node* currNode=Head;
+        Node* prevNode=NULL;
+
+        while(pos!=1){
+            pos--;
+            prevNode= currNode;
+            currNode=currNode->Next;
+            
+        }
+        // with 3 pointer we use next Node
+        Node* nextNode=currNode->Next;
+
+        // prevNode->Next=currNode->Next;
+        // currNode->Next->Prev=prevNode;
+
+        prevNode->Next=nextNode;
+        nextNode->Prev=prevNode;
+        currNode->Next=NULL;
+        currNode->Prev=NULL;
+        delete currNode;
+
+    }
+}
 int main(){
     
     Node* Head=NULL;
@@ -106,6 +159,15 @@ int main(){
 
 
     PrintLL(Head);
+
+    cout<<endl;
+    cout<<"before> "<<CountLL(Head)<<endl;
+    deleteNode(Head,Tail,4);
+    
+    cout<<"after> "<<CountLL(Head)<<endl;
+    PrintLL(Head);
+
+
 
     
 
