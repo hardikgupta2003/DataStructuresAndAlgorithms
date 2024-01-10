@@ -1,12 +1,6 @@
-//{ Driver Code Starts
-//Initial Template for C++
-
 #include <bits/stdc++.h>
 using namespace std;
 
-
-// } Driver Code Ends
-//User function Template for C++
 
 class Solution{
 public:
@@ -47,9 +41,7 @@ public:
 
 
 int main(){
-    int T;
-    cin>>T;
-    while(T--){
+   
         int N;
         cin>>N;
         stack<int> St;
@@ -73,5 +65,5 @@ int main(){
         
         cout<<endl;
     }
-}
+
 // } Driver Code Ends
