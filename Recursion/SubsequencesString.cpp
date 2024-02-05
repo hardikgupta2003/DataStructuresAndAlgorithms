@@ -12,7 +12,7 @@ void Subsequences(string &str,string output,int index,int &count){
     char ch=str[index];
     //exclude
     
-    Subsequences(str,output,index+1,count);
+  Subsequences(str,output,index+1,count);
 
     //include
     output.push_back(ch);
@@ -38,8 +38,8 @@ int main(){
     string output="";
     int count=0;
 
-    Subsequences(str,output,index,count);
-    
+   Subsequences(str,output,index,count);
+
   
 
 
