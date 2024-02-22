@@ -1,14 +1,16 @@
+//implementaion using array
+
 #include<iostream>
 using namespace std;
 
-class Queues{
+class CQueues{
     int front;
     int rear;
     int *arr;
     int size;
 
     public:
-    Queues(int size){
+    CQueues(int size){
         this->size=size;
         arr=new int[size];
         rear=-1;
@@ -16,7 +18,7 @@ class Queues{
     }
 
     void push(int data){
-        if(rear==size-1){
+        if(rear==size-1 && front==0 || (rear==front-1)){
             cout<<"overflow hogaya jii"<<endl;
             return;
         }
@@ -25,6 +27,11 @@ class Queues{
             front++;
             rear++;
             arr[rear]=data;
+        }
+        else if(rear==size-1 && front!=0){
+            rear=0;
+            arr[rear]=data;
+        
         }
         else{
             rear++;
@@ -41,6 +48,10 @@ class Queues{
             arr[front]=-1;
             front=-1;
             rear=-1;
+        }
+        else if(front==size-1 ){
+            arr[front]=-1;
+            front=0;
         }
         else {
             arr[front]=-1;
@@ -82,7 +93,7 @@ class Queues{
 
 
 int main(){
-    Queues q(5);
+    CQueues q(5);
     q.push(2);
     q.push(12);
     q.push(98);
@@ -90,12 +101,17 @@ int main(){
     q.push(5);
     q.print();
     q.pop();
-    q.pop();
-    q.pop();
-    q.pop();
-    q.pop();
     q.print();
-    // q.push(45);
+    cout<<"Size of the Queue is : "<<q.getSize()<<endl;
+    q.push(89);
+    // cout<<"Size of the Queue is : "<<q.getSize()<<endl;
+    q.print();
+    // q.pop();
+    // q.pop();
+    // q.pop();
+    // q.pop();
+    // q.print();
+    // // q.push(45);
     cout<<"The front element of queue is: "<<q.getFront()<<endl;
     cout<<"The rear element of queue is: "<<q.getRear()<<endl;
 
