@@ -79,4 +79,26 @@ public:
         return maxi;
     }
 };
-    
+    // highly optimized approach
+class Solution
+{
+public:
+    int lengthOfLIS(vector<int> &nums)
+    {
+        vector<int> ans;
+        ans.push_back(nums[0]);
+        for (auto num : nums)
+        {
+            if (num > ans.back())
+            {
+                ans.push_back(num);
+            }
+            else
+            {
+                int index = lower_bound(ans.begin(), ans.end(), num) - ans.begin();
+                ans[index] = num;
+            }
+        }
+        return ans.size();
+    }
+};
