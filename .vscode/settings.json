@@ -1,12 +1,15 @@
 {
-    "files.associations": {
-        "ostream": "cpp",
-        "iostream": "cpp",
-        "*.tcc": "cpp",
-        "string": "cpp",
-        "unordered_map": "cpp",
-        "unordered_set": "cpp",
-        "vector": "cpp",
-        "map": "cpp"
-    }
+  "files.associations": {
+    "ostream": "cpp",
+    "iostream": "cpp",
+    "*.tcc": "cpp",
+    "string": "cpp",
+    "unordered_map": "cpp",
+    "unordered_set": "cpp",
+    "vector": "cpp",
+    "map": "cpp",
+    "list": "cpp",
+    "bitset": "cpp",
+    "set": "cpp"
+  }
 }
