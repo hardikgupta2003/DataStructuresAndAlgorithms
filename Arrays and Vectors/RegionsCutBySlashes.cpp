@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// check leetcode for better solution
 class Solution
 {
 public:
