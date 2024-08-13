@@ -91,3 +91,50 @@ public:
         return solveByTabulation(prices, k);
     }
 };
+
+// space optimization
+class Solution
+{
+public:
+    int solveByTabulation(vector<int> &prices, int k)
+    {
+        int n = prices.size();
+        vector<vector<int>> next(2, vector<int>(k + 1, 0));
+        vector<vector<int>> curr(2, vector<int>(k + 1, 0));
+        for (int index = n - 1; index >= 0; index--)
+        {
+            for (int buy = 0; buy <= 1; buy++)
+            {
+                for (int limit = 1; limit <= k; limit++)
+                {
+                    int maxProfit = 0;
+                    // buy==1 khareed sakte hai
+                    if (buy)
+                    {
+                        // kharid lo
+                        int buyKaro = -prices[index] + next[0][limit];
+                        // skip krdo
+                        int skipKaro = 0 + next[1][limit];
+                        maxProfit = max(buyKaro, skipKaro);
+                    }
+                    // buy == 0 kharid nahi sakte, already khareeda hua hai
+                    else
+                    {
+                        // bech do
+                        int sellKaro = +prices[index] + next[1][limit - 1];
+                        // skip krdo
+                        int skipKaro = 0 + next[0][limit];
+                        maxProfit = max(sellKaro, skipKaro);
+                    }
+                    curr[buy][limit] = maxProfit;
+                    next = curr;
+                }
+            }
+        }
+        return curr[1][k];
+    }
+    int maxProfit(int k, vector<int> &prices)
+    {
+        return solveByTabulation(prices, k);
+    }
+};
