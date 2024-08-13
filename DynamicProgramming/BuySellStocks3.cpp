@@ -179,3 +179,37 @@ public:
         return solveByTabulation(prices);
     }
 };
+
+class Solution {
+public:
+    int solve(vector<int>& prices,int index,int operationNo,int k,vector<vector<int>>& dp){
+        if(index == prices.size()){
+            return 0;
+        }
+        if(operationNo == 2*k) return 0;
+
+        if(dp[index][operationNo] != -1) return dp[index][operationNo];
+        int maxProfit = 0;
+        if(!(operationNo & 1)){
+            // kharid lo
+            int buyKaro = -prices[index] + solve(prices,index+1,operationNo+1,k,dp);
+            // skip krdo
+            int skipKaro = 0 + solve(prices,index+1,operationNo,k,dp);
+            maxProfit = max(buyKaro,skipKaro);
+        }
+        else{
+            // bech do
+            int sellKaro = +prices[index] + solve(prices,index+1,operationNo+1,k,dp);
+            // skip krdo
+            int skipKaro = 0 + solve(prices,index+1,operationNo,k,dp);
+            maxProfit = max(sellKaro,skipKaro);
+        }
+        return dp[index][operationNo] = maxProfit;
+    }
+
+    int maxProfit(int k, vector<int>& prices) {
+        int n = prices.size();
+        vector<vector<int>> dp(n,vector<int>(2*k+1,-1));
+        return solve(prices,0,0,k,dp);        
+    }
+};
