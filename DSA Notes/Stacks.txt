@@ -1,0 +1,205 @@
+the logic of each code file in three simple steps, highlighting the key approach and solution strategy for each problem. Let's go through them:
+
+### File: `2Stack1Array.cpp`
+1. **Single array for two stacks:** Utilize one array to implement two separate stacks, one growing from the start and the other from the end.
+2. **Manage push/pop operations:** Carefully manage push and pop operations for both stacks to avoid overlap.
+3. **Handle overflow:** Include checks to prevent stack overflow when both stacks grow towards each other.
+
+---
+
+### File: `CarFleet.cpp`
+1. **Sort cars by position:** Sort the cars based on their starting positions to process them in order of distance to the target.
+2. **Calculate time to target:** For each car, calculate the time required to reach the target and determine if it forms a new fleet.
+3. **Count fleets:** Track the number of fleets by checking if a car catches up to the fleet ahead of it.
+
+---
+
+### File: `CheckIfWordIsValidAfterSubs.cpp`
+1. **Simulate string reduction:** Use a stack to simulate the removal of specific substrings from the given string.
+2. **Remove valid patterns:** Continuously remove patterns like "abc" until no more can be removed.
+3. **Check for validity:** If the stack is empty after processing, the string is valid; otherwise, it's not.
+
+---
+
+### File: `CountReversal.cpp`
+1. **Count imbalanced brackets:** Traverse the string to count unmatched opening and closing brackets using a stack.
+2. **Calculate necessary reversals:** Based on the imbalance, determine the minimum number of reversals required to balance the brackets.
+3. **Output the result:** Return the calculated number of reversals needed.
+
+---
+
+### File: `DailyTemperatures.cpp`
+1. **Track temperatures with stack:** Use a stack to track the indices of days and their temperatures.
+2. **Calculate waiting days:** For each day, find how many days until a warmer temperature occurs by comparing with the stack’s top.
+3. **Store and output results:** Store the number of waiting days for each day and output the final array.
+
+---
+
+### File: `DecodeString.cpp`
+1. **Handle nested patterns with stack:** Use a stack to decode strings with nested patterns like "3[a2[c]]".
+2. **Build decoded string:** Process characters and numbers, pushing and popping from the stack to build the final decoded string.
+3. **Combine and return result:** After processing, combine the segments and return the fully decoded string.
+
+---
+
+### File: `DeleteMiddle.cpp`
+1. **Identify the middle element:** Calculate the middle position in the stack using the stack size.
+2. **Recursive removal:** Recursively remove elements until the middle element is reached, then remove it.
+3. **Rebuild stack:** Push the elements back onto the stack in the original order, minus the middle element.
+
+---
+
+### File: `DesignBrowserHistory.cpp`
+1. **Track history with two stacks:** Use two stacks to manage the backward and forward navigation in browser history.
+2. **Visit and navigate:** Implement methods for visiting a new URL, going back, and moving forward through history.
+3. **Handle edge cases:** Ensure the stacks correctly handle edge cases, such as reaching the beginning or end of the history.
+
+---
+
+### File: `InsertAtBottom.cpp`
+1. **Pop elements recursively:** Recursively pop all elements from the stack until it is empty.
+2. **Insert element at the bottom:** Push the new element onto the now-empty stack.
+3. **Reinsert popped elements:** Push all previously popped elements back onto the stack in their original order.
+
+---
+
+### File: `InsertInSorted.cpp`
+1. **Find correct position:** Recursively pop elements until finding the correct position for the new element in the sorted stack.
+2. **Insert and rebuild:** Insert the new element and then push back the temporarily removed elements.
+3. **Maintain sorted order:** Ensure that the stack remains sorted after the insertion is complete.
+
+---
+
+### File: `Intro.cpp`
+1. **Basic stack operations:** Demonstrate fundamental stack operations like push, pop, and peek.
+2. **Handle simple scenarios:** Apply these operations in simple, educational scenarios.
+3. **Output stack status:** Show the state of the stack after each operation for understanding.
+
+---
+
+### File: `LargestRectangleHistogram.cpp`
+1. **Use a stack for area calculation:** Traverse the histogram and use a stack to manage the heights and calculate areas.
+2. **Compute max area:** For each bar, determine the largest rectangle area that can be formed.
+3. **Return the maximum area:** Output the maximum rectangle area found during the traversal.
+
+---
+
+### File: `LongestValidParentheses.cpp`
+1. **Track matching parentheses:** Use a stack to keep track of the indices of unmatched opening parentheses.
+2. **Calculate valid lengths:** Determine the length of valid parentheses substrings based on the stack contents.
+3. **Return max length:** Return the maximum length of a valid parentheses substring found.
+
+---
+
+### File: `MakeStringGreat.cpp`
+1. **Use stack to simplify string:** Traverse the string and use a stack to remove adjacent letters that differ only by case.
+2. **Remove conflicting pairs:** If a character and its adjacent counterpart are in opposite cases, pop them from the stack.
+3. **Return the final string:** The resulting stack contains the simplified string, which is then returned.
+
+---
+
+### File: `MaxDepthNesting.cpp`
+1. **Track nesting depth:** Traverse the string and increase the depth count for each opening parenthesis.
+2. **Monitor max depth:** Decrease the depth count for each closing parenthesis, keeping track of the maximum depth reached.
+3. **Return maximum depth:** Output the maximum depth encountered during the traversal.
+
+---
+
+### File: `MinAddToMakeValidParenthesis.cpp`
+1. **Count unbalanced parentheses:** Use a stack or counters to track unbalanced opening and closing parentheses.
+2. **Calculate required additions:** Determine the minimum number of parentheses needed to balance the string.
+3. **Output the total additions:** Return the calculated number of additions required to make the string valid.
+
+---
+
+### File: `MinStack.cpp`
+1. **Track minimum with auxiliary stack:** Use an additional stack to keep track of the minimum element alongside the main stack.
+2. **Push/pop operations:** Ensure that both stacks are updated simultaneously during push and pop operations.
+3. **Retrieve minimum in O(1):** The minimum element is always at the top of the auxiliary stack, providing constant-time access.
+
+---
+
+### File: `NextGreaterElement1.cpp`
+1. **Use stack to find next greater:** Traverse the array, using a stack to track elements for which the next greater element hasn't been found yet.
+2. **Pop and update:** As you find a greater element, pop from the stack and update the next greater element for those entries.
+3. **Return results:** For each element in the array, either return the next greater element or -1 if none exists.
+
+---
+
+### File: `NextGreaterNodeLL.cpp`
+1. **Traverse linked list:** Iterate through the linked list while keeping track of nodes in a stack.
+2. **Find next greater node:** For each node, determine the next node with a greater value using the stack.
+3. **Output results:** Return an array where each element corresponds to the next greater node’s value.
+
+---
+
+### File: `nextSmallerElement.cpp`
+1. **Use stack to find next smaller:** Traverse the array, using a stack to track elements for which the next smaller element hasn't been found yet.
+2. **Pop and update:** As you find a smaller element, pop from the stack and update the next smaller element for those entries.
+3. **Return results:** For each element in the array, either return the next smaller element or -1 if none exists.
+
+---
+
+### File: `OnlineStockSpan.cpp`
+1. **Track stock spans with stack:** Use a stack to store stock prices and their corresponding spans.
+2. **Calculate spans efficiently:** For each price, calculate how far back in time the price was less than or equal.
+3. **Return span array:** Output an array where each element represents the span for that day's stock price.
+
+---
+
+### File: `prevSmallerElement.cpp`
+1. **Use stack to find previous smaller:** Traverse the array from left to right, using a stack to keep track of the previous elements.
+2. **Pop and update:** Update the previous smaller element for the current element by checking the stack.
+3. **Return results:** Output the previous smaller element for each array element, or -1 if none exists.
+
+---
+
+### File: `RedundantParenthesis.cpp`
+1. **Track expression with stack:** Traverse the expression and push elements onto a stack to track parentheses and operators.
+2. **Identify redundancy:** Check for redundant parentheses by ensuring that within each set of parentheses there is an operator.
+3. **Return result:** Output whether the expression contains redundant parentheses.
+
+---
+
+### File: `RemoveAdjacent.cpp`
+1. **Use stack to remove duplicates:** Traverse the string and use a stack to manage adjacent duplicate characters.
+2. **Pop duplicates:** If the current character matches the stack's top, pop the top character to remove the duplicate.
+3. **Return final string:** The remaining characters in the stack form the result, which is returned as the simplified string.
+
+---
+
+### File: `RemoveKDigit.cpp`
+1. **Use stack to find smallest number:** Traverse the number string, using a stack to build the smallest possible number.
+2. **Remove digits strategically:** As you traverse, pop elements from the stack if they are larger than the current digit, ensuring that the stack contains the smallest sequence possible.
+3. **Return final number:** After processing, trim the stack to remove any excess digits and return the final smallest number as a string.
+
+---
+
+### File: `ReverseStack.cpp`
+1. **Pop
+
+ all elements recursively:** Recursively pop all elements from the stack until it’s empty.
+2. **Insert elements at the bottom:** After popping, insert each element at the bottom of the stack to reverse the order.
+3. **Rebuild reversed stack:** Continue until all elements are reinserted, resulting in the reversed stack.
+
+---
+
+### File: `SortStack.cpp`
+1. **Pop and hold elements:** Recursively pop elements from the stack and hold them until the stack is empty.
+2. **Insert in sorted order:** Reinsert each element into the stack in the correct sorted position.
+3. **Rebuild sorted stack:** Continue until all elements are back in the stack, now sorted.
+
+---
+
+### File: `TheCelebrityProblem.cpp`
+1. **Identify potential celebrity:** Use a stack to eliminate non-celebrities by comparing pairs of people.
+2. **Verify celebrity status:** Once a potential celebrity is identified, verify if everyone knows them and they know no one.
+3. **Return result:** Return the index of the celebrity if one exists, otherwise return -1.
+
+---
+
+### File: `ValidParenthesis.cpp`
+1. **Match parentheses with stack:** Traverse the string, using a stack to ensure each opening parenthesis has a matching closing parenthesis.
+2. **Check balance:** Ensure that the stack is empty after processing all characters, indicating a balanced string.
+3. **Return validation:** Return `true` if the parentheses are valid, `false` otherwise.
+
