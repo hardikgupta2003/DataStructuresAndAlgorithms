@@ -31,3 +31,37 @@ public:
         return solve(0, nums, true, dp);
     }
 };
+
+// bottom up
+class Solution
+{
+public:
+    int n;
+    long long solve(vector<int> &nums)
+    {
+        vector<vector<long long>> dp(n + 1, vector<long long>(2, 0));
+        for (int index = n - 1; index >= 0; index--)
+        {
+            for (int flag = 1; flag >= 0; flag--)
+            {
+                long long skip = dp[index + 1][flag];
+                long long val = nums[index];
+                if (flag == false)
+                {
+                    val = -val;
+                }
+                long long take = val + dp[index + 1][!flag];
+
+                dp[index][flag] = max(skip, take);
+            }
+        }
+
+        return dp[0][1];
+    }
+    long long maxAlternatingSum(vector<int> &nums)
+    {
+        n = nums.size();
+
+        return solve(nums);
+    }
+};
