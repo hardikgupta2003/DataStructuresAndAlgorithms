@@ -6,26 +6,30 @@ class Solution
 public:
     string makeGood(string s)
     {
+        string ans = "";
         stack<char> st;
-        for (int i = 0; i < s.size(); i++)
+        // traverse the string
+        for (auto ch : s)
         {
-            char ch = s[i];
+            // if stack is not empty and difference between char and stack top is 32 ->
+            // they are same alphabets but in different case
             if (!st.empty() && abs(ch - st.top()) == 32)
             {
                 st.pop();
             }
             else
             {
+                // not same with dfferent case ..so push
                 st.push(ch);
             }
         }
-        cout << 'a' - 'A';
-        string ans = "";
+        // store value of stack to string
         while (!st.empty())
         {
             ans.push_back(st.top());
             st.pop();
         }
+        // reverse the string
         reverse(ans.begin(), ans.end());
         return ans;
     }

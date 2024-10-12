@@ -9,19 +9,23 @@ public:
     {
         if (s[0] != 'a')
             return false;
+        // we will try to convert this string into empty string
+        // if possible so return true , else false;
         stack<char> st;
-        for (int i = 0; i < s.size(); i++)
+        for (auto &ch : s)
         {
-            char ch = s[i];
+            // ch agar 'a' hai toh push kro
             if (ch == 'a')
             {
-                st.push('a');
+                st.push(ch);
             }
             else if (ch == 'b')
             {
+                // agar ch 'b' hai toh check kro kya top pr 'a' hai ? to make it partial valid
+                // push kro 'b' taaki aage jaake 'c' mil paye to make it full valid
                 if (!st.empty() && st.top() == 'a')
                 {
-                    st.push('b');
+                    st.push(ch);
                 }
                 else
                 {
@@ -29,14 +33,18 @@ public:
                 }
             }
             else
-            { /// ch == 'c'
+            { // ch == 'c'
+                // agar ch 'c' hai to check kro top pr 'b' hai? agar hai toh pop kro
                 if (!st.empty() && st.top() == 'b')
                 {
                     st.pop();
+                    // 'b' pop krne ke baad check kro , kya top pr 'a' bhi hai?
+                    // agar hai toh mtlb "abc" valid string mil gyi,,,pop kro 'a' ko bhi
                     if (!st.empty() && st.top() == 'a')
                     {
                         st.pop();
                     }
+                    // if not return false
                     else
                     {
                         return false;
@@ -48,6 +56,7 @@ public:
                 }
             }
         }
+        // agar stack empty matlb string empty...so string can be transformed, else false
         return st.empty();
     }
 };
