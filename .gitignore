@@ -1,3 +1,5 @@
 Graphs/CheckLoop.exe
 Graphs/CreationWithoutWeight.exe
 .exe
+Graphs/TopologicalSortDFS.exe
+Graphs/TopologicalSortBFS.exe
