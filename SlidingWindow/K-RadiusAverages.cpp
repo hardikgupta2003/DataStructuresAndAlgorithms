@@ -37,3 +37,47 @@ public:
         return ans;
     }
 };
+
+// sliding window
+class Solution
+{
+public:
+    vector<int> getAverages(vector<int> &nums, int k)
+    {
+        int left = 0;
+        int i = k;
+        int right = i + k;
+        int n = nums.size();
+        int window = 2 * k + 1;
+        // answer vector
+        vector<int> ans(n, -1);
+        // base case
+        if (n < window)
+            return ans;
+        if (k == 0)
+            return nums;
+        long long windowSum = 0;
+        // process first window
+        for (int i = left; i <= right; i++)
+        {
+            windowSum += nums[i];
+        }
+        ans[i] = windowSum / window;
+        i++;
+        right++;
+        // process remaining window
+        while (right < n)
+        {
+            int newElement = nums[right];
+            int goneElement = nums[left];
+
+            windowSum = windowSum + newElement - goneElement;
+            ans[i] = windowSum / window;
+
+            i++;
+            right++;
+            left++;
+        }
+        return ans;
+    }
+};
