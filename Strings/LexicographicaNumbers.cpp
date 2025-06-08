@@ -28,3 +28,34 @@ public:
         return result;
     }
 };
+
+
+// better solution
+class Solution
+{
+public:
+    void solve(long long currNum, int n, vector<int> &result)
+    {
+        if (currNum > n)
+            return;
+
+        result.push_back(currNum);
+        for (int i = 0; i <= 9; i++)
+        {
+            long long newNum = (currNum * 10) + i;
+            if (newNum > n)
+                return;
+            solve(newNum, n, result);
+        }
+    }
+    vector<int> lexicalOrder(int n)
+    {
+        vector<int> result;
+
+        for (int i = 1; i <= 9; i++)
+        {
+            solve(i, n, result);
+        }
+        return result;
+    }
+};
