@@ -1,12 +1,41 @@
-#include <iostream>
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
 using namespace std;
+
+void reverseArr(vector<char> &arr)
+{
+    if (0 == arr.size())
+    {
+        return;
+    }
+
+    char val = arr[0];
+    arr.erase(arr.begin());
+
+    reverseArr(arr);
+
+    arr.push_back(val);
+}
 
 int main()
 {
-    int a = 50, b = 4;
+    vector<char> arr;
+    for (int i = 'a'; i <= 'd'; i++)
+    {
+        arr.push_back(i);
+    }
+    for (auto &i : arr)
+    {
+        cout << i << endl;
+    }
+    cout<<endl;
 
-    int c = ++b - --b - --a + a++;
-    cout << c; // Should output 1
+    reverseArr(arr);
 
+    for (auto &i : arr)
+    {
+        cout << i << endl;
+    }
 
+    return 0;
 }
