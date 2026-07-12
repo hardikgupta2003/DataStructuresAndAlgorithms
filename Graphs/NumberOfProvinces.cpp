@@ -15,6 +15,42 @@ public:
         }
     }
 
+    void dfsOptimized(vector<vector<int>> &isConnected, vector<bool> &visited, int u)
+    {
+        visited[u] = true;
+
+        for (int v = 0; v < isConnected.size(); v++)
+        {
+            if (isConnected[u][v] == 1 && u != v && !visited[v])
+            {
+                dfs(isConnected, visited, v);
+            }
+        }
+    }
+
+    void bfs(vector<vector<int>> &adj, vector<bool> &visited, int u)
+    {
+
+        queue<int> q;
+
+        q.push(u);
+        visited[u] = true;
+        while (!q.empty())
+        {
+            int front = q.front();
+
+            q.pop();
+            for (auto &v : adj[front])
+            {
+                if (!visited[v])
+                {
+                    q.push(v);
+                    visited[v] = true;
+                }
+            }
+        }
+    }
+
     int findCircleNum(vector<vector<int>> &isConnected)
     {
         int n = isConnected.size();
