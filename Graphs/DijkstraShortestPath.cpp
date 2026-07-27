@@ -100,3 +100,139 @@ int main()
 
     return 0;
 }
+
+class Solution
+{
+public:
+    vector<int> dijkstra(int V, vector<vector<int>> &edges, int src)
+    {
+
+        // Min Heap -> {distance, node}
+        priority_queue<pair<int, int>,
+                       vector<pair<int, int>>,
+                       greater<pair<int, int>>>
+            pq;
+
+        // Stores the shortest distance from source to every node
+        vector<int> result(V, INT_MAX);
+
+        // Adjacency List -> {neighbor, weight}
+        vector<vector<pair<int, int>>> adj(V);
+
+        // Convert edge list into adjacency list
+        for (auto &edge : edges)
+        {
+            int u = edge[0];
+            int v = edge[1];
+            int w = edge[2];
+
+            // Since graph is undirected
+            adj[u].push_back({v, w});
+            adj[v].push_back({u, w});
+        }
+
+        // Distance from source to itself is 0
+        result[src] = 0;
+
+        // Push source node into min heap
+        pq.push({0, src});
+
+        while (!pq.empty())
+        {
+
+            // Get node having minimum distance
+            pair<int, int> top = pq.top();
+            pq.pop();
+
+            int wt = top.first; // Current shortest distance
+            int node = top.second;
+
+            // Traverse all adjacent nodes
+            for (auto &vec : adj[node])
+            {
+
+                int adjNode = vec.first; // Neighbor node
+                int d = vec.second;      // Edge weight
+
+                // Relax the edge if a shorter path is found
+                if (wt + d < result[adjNode])
+                {
+                    result[adjNode] = wt + d;
+
+                    // Push updated distance into heap
+                    pq.push({result[adjNode], adjNode});
+                }
+            }
+        }
+
+        return result;
+    }
+};
+
+//using set
+
+class Solution {
+public:
+    vector<int> dijkstra(int V, vector<vector<int>> &edges, int src) {
+
+        // Stores {distance, node} in sorted order by distance
+        set<pair<int, int>> st;
+
+        // Stores the shortest distance from source to every node
+        vector<int> result(V, INT_MAX);
+
+        // Adjacency List -> {neighbor, weight}
+        vector<vector<pair<int, int>>> adj(V);
+
+        // Convert edge list into adjacency list
+        for (auto &edge : edges) {
+            int u = edge[0];
+            int v = edge[1];
+            int w = edge[2];
+
+            // Since the graph is undirected
+            adj[u].push_back({v, w});
+            adj[v].push_back({u, w});
+        }
+
+        // Distance from source to itself is 0
+        result[src] = 0;
+
+        // Insert source node with distance 0
+        st.insert({0, src});
+
+        while (!st.empty()) {
+
+            // Extract the node having the minimum distance
+            pair<int, int> top = *st.begin();
+            st.erase(top);
+
+            int wt = top.first;      // Current shortest distance
+            int node = top.second;   // Current node
+
+            // Traverse all adjacent nodes
+            for (auto &vec : adj[node]) {
+
+                int adjNode = vec.first;   // Neighbor node
+                int d = vec.second;        // Edge weight
+
+                // Relax the edge if a shorter path is found
+                if (wt + d < result[adjNode]) {
+
+                    // Remove the old entry if it exists in the set
+                    if (result[adjNode] != INT_MAX) {
+                        st.erase({result[adjNode], adjNode});
+                    }
+
+                    // Update the shortest distance
+                    result[adjNode] = wt + d;
+
+                    // Insert the updated distance
+                    st.insert({result[adjNode], adjNode});
+                }
+            }
+        }
+
+        return result;
+    }
+};
