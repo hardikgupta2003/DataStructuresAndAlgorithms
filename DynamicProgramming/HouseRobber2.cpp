@@ -59,6 +59,60 @@ public:
 
         return max(result1, result2);
     }
+    int robWithSpaceOptimization(vector<int>& nums) {
+        int n = nums.size();
+
+        if (n == 1) return nums[0];
+
+        // Case 1: Exclude the last house
+        // Consider houses from index 0 to n-2
+        int prevPrev = 0;
+        int prev = nums[0];
+        int ans = nums[0];
+
+        for (int i = 2; i <= n - 1; i++) {
+            // Rob current house + maximum money from two houses back
+            int steal = nums[i - 1] + prevPrev;
+
+            // Skip current house
+            int skip = prev;
+
+            // Choose the maximum money
+            ans = max(steal, skip);
+
+            // Update previous two states
+            prevPrev = prev;
+            prev = ans;
+        }
+
+        int result1 = ans;
+
+        // Case 2: Exclude the first house
+        // Consider houses from index 1 to n-1
+        prevPrev = 0;
+        prev = 0;
+        ans = 0;
+
+        for (int i = 2; i <= n; i++) {
+            // Rob current house + maximum money from two houses back
+            int steal = nums[i - 1] + prevPrev;
+
+            // Skip current house
+            int skip = prev;
+
+            // Choose the maximum money
+            ans = max(steal, skip);
+
+            // Update previous two states
+            prevPrev = prev;
+            prev = ans;
+        }
+
+        int result2 = ans;
+
+        // Return the maximum from both cases
+        return max(result1, result2);
+    }
 
     int rob(vector<int> &nums)
     {
