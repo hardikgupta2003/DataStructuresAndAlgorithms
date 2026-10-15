@@ -26,6 +26,40 @@ public:
         return dp[index];
     }
 
+    int robWithBottomUp(vector<int>& nums) {
+        int n = nums.size();
+
+        if (n == 1) return nums[0];
+
+        vector<int> dp(n + 1, 0);
+
+        // Case 1: Exclude the last house
+        dp[0] = 0;
+        dp[1] = nums[0];
+
+        for (int i = 2; i <= n - 1; i++) {
+            int steal = nums[i - 1] + dp[i - 2];
+            int skip = dp[i - 1];
+            dp[i] = max(steal, skip);
+        }
+
+        int result1 = dp[n - 1];
+
+        // Case 2: Exclude the first house
+        dp.assign(n + 1, 0);
+
+        // dp[i] represents the best result for nums[1...i]
+        for (int i = 2; i <= n; i++) {
+            int steal = nums[i - 1] + dp[i - 2];
+            int skip = dp[i - 1];
+            dp[i] = max(steal, skip);
+        }
+
+        int result2 = dp[n];
+
+        return max(result1, result2);
+    }
+
     int rob(vector<int> &nums)
     {
         vector<int> dp1(nums.size() + 1, -1);

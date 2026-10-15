@@ -85,6 +85,41 @@ public:
         return prev;
     }
 
+    int rob2(vector<int>& nums) {
+        int n = nums.size();
+
+        // If there is only one house, rob it
+        if (n == 1) return nums[0];
+
+        // Maximum money when no house is robbed
+        int prevPrev = 0;
+
+        // Maximum money from the first house (nums[0])
+        int prev = nums[0];
+
+        int ans = -1;
+
+        // Process houses starting from the second house
+        for (int i = 2; i <= n; i++) {
+
+            // Rob current house + maximum money from two houses back
+            int include = nums[i - 1] + prevPrev;
+
+            // Skip current house and keep the previous maximum
+            int exclude = prev;
+
+            // Choose the maximum money between robbing and skipping
+            ans = max(include, exclude);
+
+            // Update variables for the next iteration
+            prevPrev = prev;
+            prev = ans;
+        }
+
+        // Return the maximum money that can be robbed
+        return ans;
+    }
+
     int rob(vector<int> &nums)
     {
         int index = 0;
