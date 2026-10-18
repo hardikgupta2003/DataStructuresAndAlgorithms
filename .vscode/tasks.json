@@ -10,6 +10,7 @@
                 "-std=c++17",
                 "-Wall",
                 "-g",
+                "-I${env:HOME}/.local/include",
                 "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"

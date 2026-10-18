@@ -70,10 +70,12 @@
     "valarray": "cpp"
   },
   "code-runner.executorMap": {
-    "cpp": "cd $dir && g++ -std=c++17 -Wall $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "cpp": "cd $dir && g++ -std=c++17 -Wall -I$HOME/.local/include $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
     "c": "cd $dir && gcc -std=c17 -Wall $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
   },
   "code-runner.saveFileBeforeRun": true,
   "C_Cpp.default.cppStandard": "c++17",
+  "C_Cpp.default.includePath": ["${workspaceFolder}/**", "${env:HOME}/.local/include"],
+  "C_Cpp.default.compilerPath": "/usr/bin/clang++",
   "C_Cpp.default.cStandard": "c17"
 }

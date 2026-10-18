@@ -24,6 +24,21 @@ public:
         dp[prev + 1][curr] = max(include, exclude);
         return dp[prev + 1][curr];
     }
+    // using recursion
+     int solveUsingRec(vector<int>& nums,int n,int index,int prev){
+        if(index>=n) return 0;
+
+        //take
+        int take = 0;
+        if(prev == -1 || nums[prev] < nums[index]){
+            take = 1 + solveUsingRec(nums,n,index+1,index);
+        }
+
+        //skip
+        int skip = solveUsingRec(nums,n,index+1,prev);
+
+        return max(take,skip);
+    }
     int lengthOfLIS(vector<int> &nums)
     {
         int n = nums.size();
