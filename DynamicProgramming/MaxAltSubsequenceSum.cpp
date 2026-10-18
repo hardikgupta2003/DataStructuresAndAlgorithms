@@ -32,7 +32,32 @@ public:
     }
 };
 
-// bottom up
+class Solution {
+public:
+    // bottom up approach
+    long long maxAlternatingSum(vector<int>& nums) {
+        int n = nums.size();
+
+        vector<vector<long long>> dp(n+1,vector<long long>(2,0));
+
+        if (n == 1) return nums[0];
+
+
+        for(int i=1;i<n+1;i++){
+            // 0-> even, 1-> odd
+            //                     take          skip
+            dp[i][0] = max(dp[i-1][1]-nums[i-1],dp[i-1][0]);
+
+            //                     take          skip
+            dp[i][1] = max(dp[i-1][0]+nums[i-1],dp[i-1][1]);
+
+        }
+
+        return max(dp[n][0],dp[n][1]);
+    }
+};
+
+// bottom up with top down approach template
 class Solution
 {
 public:
